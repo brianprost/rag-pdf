@@ -68,3 +68,8 @@ amplifytools.xcconfig
 
 # open-next
 .open-next
+
+# sst
+.sst
+
+*.env

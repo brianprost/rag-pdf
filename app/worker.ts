@@ -35,6 +35,11 @@ const model = new BedrockChat({
   model: "meta.llama2-13b-chat-v1",
   region: "us-east-1",
   maxTokens: 2048,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_ELANOR_RAGBY_AWS_ACCESS_KEY_ID!,
+    secretAccessKey:
+      process.env.NEXT_PUBLIC_ELANOR_RAGBY_AWS_SECRET_ACCESS_KEY!,
+  },
 });
 
 const REPHRASE_QUESTION_TEMPLATE = `Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.

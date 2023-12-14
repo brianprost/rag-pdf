@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "sst bind next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -43,9 +43,10 @@
     "voy-search": "^0.6.3"
   },
   "devDependencies": {
-    "aws-cdk-lib": "2.114.1",
+    "aws-cdk-lib": "2.110.1",
     "constructs": "10.3.0",
-    "prettier": "3.1.1"
+    "prettier": "3.1.1",
+    "sst": "^2.38.7"
   },
   "browser": {
     "child_process": false
