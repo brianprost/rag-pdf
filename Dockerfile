@@ -1,4 +1,4 @@
-FROM node:20
+FROM --platform=linux/amd64 node:20
 RUN npm install -g pnpm
 WORKDIR /app
 COPY package.json .
