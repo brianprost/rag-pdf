@@ -171,27 +171,35 @@ export function ChatWindow(props: {
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">{titleText}</h1>
             <div className="py-6">
-              <h3 className="text-xl mb-4 ml-auto mr-auto">
-                <a target="_blank" href="https://github.com/tantaraio/voy">
-                  🦀 Voy
-                </a>{" "}
-                +{" "}
-                <a target="_blank" href="https://aws.amazon.com/bedrock/">
-                  🏔️ AWS Bedrock
-                </a>{" "}
-                +{" "}
-                <a target="_blank" href="https://js.langchain.com">
-                  🦜🔗 LangChain.js
-                </a>{" "}
-                +{" "}
-                <a
-                  target="_blank"
-                  href="https://huggingface.co/docs/transformers.js/index"
-                >
-                  🤗 Transformers.js
-                </a>
-              </h3>
-              <ul className="text-left space-y-4">
+              <h2 className="text-lg underline mb-4">Powered by:</h2>
+              <div className="text-xl mb-4 justify-center items-center flex flex-col">
+                <ul className="space-y-4 text-zinc-700">
+                  <a target="_blank" href="https://github.com/tantaraio/voy">
+                    <li className="flex">
+                      <span className="mr-8">🦀</span> Voy
+                    </li>
+                  </a>{" "}
+                  <a target="_blank" href="https://aws.amazon.com/bedrock/">
+                    <li className="flex">
+                      <span className="mr-8">🏔️</span> AWS Bedrock
+                    </li>
+                  </a>{" "}
+                  <a target="_blank" href="https://js.langchain.com">
+                    <li className="flex">
+                      <span className="mr-3">🦜🔗</span> LangChain.js
+                    </li>
+                  </a>{" "}
+                  <a
+                    target="_blank"
+                    href="https://huggingface.co/docs/transformers.js/index"
+                  >
+                    <li className="flex">
+                      <span className="mr-8">🤗</span> Transformers.js
+                    </li>
+                  </a>
+                </ul>
+              </div>
+              {/* <ul className="text-left space-y-4">
                 <li className="flex">
                   <span className="text-xl">🌐</span>
                   <p className="ml-4">
@@ -226,7 +234,7 @@ export function ChatWindow(props: {
                     handles orchestration.
                   </p>
                 </li>
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
@@ -297,10 +305,7 @@ export function ChatWindow(props: {
             placeholder={placeholder ?? "What's it like to be a pirate?"}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button
-            type="submit"
-            className="shrink-0 px-8 py-4 bg-sky-600 rounded w-28"
-          >
+          <button type="submit" className="btn btn-primary">
             <div
               role="status"
               className={`${isLoading ? "" : "hidden"} flex justify-center`}
@@ -336,9 +341,7 @@ export function ChatWindow(props: {
         readyToChat ? "border" : ""
       }`}
     >
-      <h2 className={`${readyToChat ? "" : "hidden"} text-2xl`}>
-        {titleText}
-      </h2>
+      <h2 className={`${readyToChat ? "" : "hidden"} text-2xl`}>{titleText}</h2>
       {readyToChat ? chatInterfaceComponent : choosePDFComponent}
       <ToastContainer />
     </div>

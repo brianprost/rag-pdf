@@ -13,10 +13,10 @@ export default {
       const service = new Service(stack, "service", {
         port: 3000,
         environment: {
-          NEXT_PUBLIC_ELANOR_RAGBY_AWS_ACCESS_KEY_ID:
-            process.env.NEXT_PUBLIC_ELANOR_RAGBY_AWS_ACCESS_KEY_ID!,
-          NEXT_PUBLIC_ELANOR_RAGBY_AWS_SECRET_ACCESS_KEY:
-            process.env.NEXT_PUBLIC_ELANOR_RAGBY_AWS_SECRET_ACCESS_KEY!,
+          NEXT_PUBLIC_ELEANOR_RAGBY_AWS_ACCESS_KEY_ID:
+            process.env.NEXT_PUBLIC_ELEANOR_RAGBY_AWS_ACCESS_KEY_ID!,
+          NEXT_PUBLIC_ELEANOR_RAGBY_AWS_SECRET_ACCESS_KEY:
+            process.env.NEXT_PUBLIC_ELEANOR_RAGBY_AWS_SECRET_ACCESS_KEY!,
         },
       });
 

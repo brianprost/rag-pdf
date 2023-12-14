@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <ChatWindow
       emoji="🎅"
-      titleText="Elanor RAGby"
+      titleText="Eleanor RAGby"
       placeholder="Ask me something about the document you uploaded!"
     ></ChatWindow>
   );

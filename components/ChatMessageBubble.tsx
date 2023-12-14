@@ -21,15 +21,11 @@ export function ChatMessageBubble(props: { message: ChatWindowMessage, aiEmoji?:
   const [showCommentForm, setShowCommentForm] = useState(false);
   return (
     <div
-      className={`chat ${alignmentClassName} rounded px-4 py-2 max-w-[80%] mb-8 flex flex-col`}
+      className={`chat ${alignmentClassName} px-4 py-2 max-w-[80%] mb-8 flex flex-col`}
     >
-      <div className="chat-image avatar">
-        <div className="w-10 rounded-full">{prefix}</div>
-      </div>
+      
       <div className="chat-bubble">
-        <div className="whitespace-pre-wrap">
           {content.trim()}
-        </div>
       </div>
     </div>
   );

@@ -36,9 +36,9 @@ const model = new BedrockChat({
   region: "us-east-1",
   maxTokens: 2048,
   credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_ELANOR_RAGBY_AWS_ACCESS_KEY_ID!,
+    accessKeyId: process.env.NEXT_PUBLIC_ELEANOR_RAGBY_AWS_ACCESS_KEY_ID!,
     secretAccessKey:
-      process.env.NEXT_PUBLIC_ELANOR_RAGBY_AWS_SECRET_ACCESS_KEY!,
+      process.env.NEXT_PUBLIC_ELEANOR_RAGBY_AWS_SECRET_ACCESS_KEY!,
   },
 });
 
