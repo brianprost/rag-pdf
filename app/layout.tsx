@@ -1,9 +1,9 @@
 import "./globals.css";
-import { Public_Sans } from "next/font/google";
+import { Sora } from "next/font/google";
 
 import { Navbar } from "@/components/Navbar";
 
-const publicSans = Public_Sans({ subsets: ["latin"] });
+const publicSans = Sora({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -17,15 +17,15 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <meta
           name="description"
-          content="Upload a PDF, then ask questions about it - without a single remote request!"
+          content="Upload a PDF, then ask questions about it."
         />
         <meta
           property="og:title"
-          content="Fully Client-Side Chat Over Documents"
+          content="HumRRO AI RAG Chat Over Documents"
         />
         <meta
           property="og:description"
-          content="Upload a PDF, then ask questions about it - without a single remote request!"
+          content="Upload a PDF, then ask questions about it."
         />
         <meta property="og:image" content="/images/og-image.png" />
         <meta property="og:image:width" content="1200" />
@@ -33,11 +33,11 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Fully Client-Side Chat Over Documents"
+          content="HumRRO AI RAG Chat Over Documents"
         />
         <meta
           name="twitter:description"
-          content="Upload a PDF, then ask questions about it - without a single remote request!"
+          content="Upload a PDF, then ask questions about it."
         />
         <meta name="twitter:image" content="/images/og-image.png" />
       </head>
