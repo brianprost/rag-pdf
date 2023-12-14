@@ -6,6 +6,7 @@ import { WebPDFLoader } from "langchain/document_loaders/web/pdf";
 import { HuggingFaceTransformersEmbeddings } from "langchain/embeddings/hf_transformers";
 import { VoyVectorStore } from "langchain/vectorstores/voy";
 import { ChatOllama } from "langchain/chat_models/ollama";
+import { BedrockChat } from "langchain/chat_models/bedrock/web";
 import { Document } from "langchain/document";
 import {
   ChatPromptTemplate,
@@ -25,10 +26,15 @@ const embeddings = new HuggingFaceTransformersEmbeddings({
 
 const voyClient = new VoyClient();
 const vectorstore = new VoyVectorStore(voyClient, embeddings);
-const ollama = new ChatOllama({
-  baseUrl: "http://localhost:11435",
-  temperature: 0.3,
-  model: "mistral:latest",
+// const model = new ChatOllama({
+//   baseUrl: "http://44.197.230.159:11435",
+//   temperature: 0.3,
+//   model: "vicuna:7b-16k",
+// });
+const model = new BedrockChat({
+  model: "meta.llama2-13b-chat-v1",
+  region: "us-east-1",
+  maxTokens: 2048,
 });
 
 const REPHRASE_QUESTION_TEMPLATE = `Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
@@ -126,13 +132,13 @@ const queryVectorStore = async (messages: ChatWindowMessage[]) => {
   const chatHistory: ChatWindowMessage[] = messages.slice(0, -1);
 
   const retrievalChain = createRetrievalChain(
-    ollama,
+    model,
     vectorstore.asRetriever(),
     chatHistory,
   );
   const responseChain = RunnableSequence.from([
     responseChainPrompt,
-    ollama,
+    model,
     new StringOutputParser(),
   ]);
 
@@ -205,7 +211,7 @@ self.addEventListener("message", async (event: any) => {
     } catch (e: any) {
       self.postMessage({
         type: "error",
-        error: `${e.message}. Make sure you are running Ollama.`,
+        error: `${e.message}. Make sure you are connected to Bedrock.`,
       });
       throw e;
     }
