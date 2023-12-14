@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ChatWindowMessage } from '@/schema/ChatWindowMessage';
 
 import { useState, type FormEvent } from "react";
-import { Feedback } from 'langsmith';
+import { Client } from 'langsmith';
 
 export function ChatMessageBubble(props: { message: ChatWindowMessage, aiEmoji?: string }) {
   const { role, content, runId } = props.message;
