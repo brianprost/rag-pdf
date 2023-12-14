@@ -18,63 +18,63 @@ export function ChatMessageBubble(props: { message: ChatWindowMessage, aiEmoji?:
   const prefix = role === "human" ? "🧑" : props.aiEmoji;
 
   const [isLoading, setIsLoading] = useState(false);
-  const [feedback, setFeedback] = useState<Feedback | null>(null);
+  // const [feedback, setFeedback] = useState<Client | null>(null);
   const [comment, setComment] = useState("");
   const [showCommentForm, setShowCommentForm] = useState(false);
 
-  async function handleScoreButtonPress(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, score: number) {
-    e.preventDefault();
-    setComment("");
-    await sendFeedback(score);
-  }
+  // async function handleScoreButtonPress(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, score: number) {
+  //   e.preventDefault();
+  //   setComment("");
+  //   await sendFeedback(score);
+  // }
 
-  async function handleCommentSubmission(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const score = typeof feedback?.score === "number" ? feedback.score : 0;
-    await sendFeedback(score);
-  }
+  // async function handleCommentSubmission(e: FormEvent<HTMLFormElement>) {
+  //   e.preventDefault();
+  //   const score = typeof feedback?.score === "number" ? feedback.score : 0;
+  //   await sendFeedback(score);
+  // }
 
-  async function sendFeedback(score: number) {
-    if (isLoading) {
-      return;
-    }
+  // async function sendFeedback(score: number) {
+  //   if (isLoading) {
+  //     return;
+  //   }
 
-    setIsLoading(true);
+  //   setIsLoading(true);
 
-    const response = await fetch("api/feedback", {
-      method: feedback?.id ? "PUT" : "POST",
-      body: JSON.stringify({
-        id: feedback?.id,
-        run_id: runId,
-        score,
-        comment,
-      })
-    });
+  //   const response = await fetch("api/feedback", {
+  //     method: feedback?.id ? "PUT" : "POST",
+  //     body: JSON.stringify({
+  //       id: feedback?.id,
+  //       run_id: runId,
+  //       score,
+  //       comment,
+  //     })
+  //   });
 
-    const json = await response.json();
+  //   const json = await response.json();
 
-    if (json.error) {
-      toast(json.error, {
-        theme: "dark"
-      });
-      return;
-    } else if (feedback?.id && comment) {
-      toast("Response recorded! Go to https://smith.langchain.com and check it out in under your run's \"Feedback\" pane.", {
-        theme: "dark",
-        autoClose: 3000,
-      });
-      setComment("");
-      setShowCommentForm(false);
-    } else {
-      setShowCommentForm(true);
-    }
+  //   if (json.error) {
+  //     toast(json.error, {
+  //       theme: "dark"
+  //     });
+  //     return;
+  //   } else if (feedback?.id && comment) {
+  //     toast("Response recorded! Go to https://smith.langchain.com and check it out in under your run's \"Feedback\" pane.", {
+  //       theme: "dark",
+  //       autoClose: 3000,
+  //     });
+  //     setComment("");
+  //     setShowCommentForm(false);
+  //   } else {
+  //     setShowCommentForm(true);
+  //   }
 
-    if (json.feedback) {
-      setFeedback(json.feedback);
-    }
+  //   if (json.feedback) {
+  //     setFeedback(json.feedback);
+  //   }
 
-    setIsLoading(false);
-  }
+  //   setIsLoading(false);
+  // }
   return (
     <div
       className={`${alignmentClassName} ${colorClassName} rounded px-4 py-2 max-w-[80%] mb-8 flex flex-col`}
@@ -87,15 +87,15 @@ export function ChatMessageBubble(props: { message: ChatWindowMessage, aiEmoji?:
           {content.trim()}
         </div>
       </div>
-      <div className={`${!runId ? "hidden" : ""} ml-auto mt-2`}>
+      {/* <div className={`${!runId ? "hidden" : ""} ml-auto mt-2`}>
         <button className={`p-2 border text-3xl rounded hover:bg-green-400 ${feedback && feedback.score === 1 ? "bg-green-400" : ""}`} onMouseUp={(e) => handleScoreButtonPress(e, 1)}>
           👍
         </button>
         <button className={`p-2 border text-3xl rounded ml-4 hover:bg-red-400 ${feedback && feedback.score === 0 ? "bg-red-400" : ""}`} onMouseUp={(e) => handleScoreButtonPress(e, 0)}>
           👎
         </button>
-      </div>
-      <div className={`${(feedback && showCommentForm) ? "" : "hidden"} min-w-[480px]`}>
+      </div> */}
+      {/* <div className={`${(feedback && showCommentForm) ? "" : "hidden"} min-w-[480px]`}>
         <form onSubmit={handleCommentSubmission} className="relative">
           <input
               className="mr-8 p-4 rounded w-full border mt-2"
@@ -111,7 +111,7 @@ export function ChatMessageBubble(props: { message: ChatWindowMessage, aiEmoji?:
             <span className="sr-only">Loading...</span>
           </div>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 }
